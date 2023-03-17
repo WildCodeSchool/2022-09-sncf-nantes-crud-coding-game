@@ -1,6 +1,6 @@
-CREATE DATABASE mydbname;
+CREATE DATABASE db_coding_game;
 
-USE mydbname;
+USE db_coding_game;
 
 CREATE TABLE animal (
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
