@@ -23,9 +23,18 @@ app.use('/api', router);
 app.get("/", (req, res) => {
     res.send("Welcome");
 });
+const getProduct = (req,res) => {
+  res.status(200).json(product)
+}
+app.get("/product", getProduct
+)
 
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+app.listen(port, (err) => {
+  if (err) {
+    console.error('Something bad happened');
+  } else {
+    console.log(`Server is listening on ${port}`);
+  }
 });
 
 module.exports = app;
