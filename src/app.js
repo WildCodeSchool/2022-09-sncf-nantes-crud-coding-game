@@ -23,11 +23,7 @@ app.use('/api', router);
 app.get("/", (req, res) => {
     res.send("Welcome");
 });
-const getProduct = (req,res) => {
-  res.status(200).json(products)
-}
-app.get("/product", getProduct
-)
+
 
 app.listen(port, (err) => {
   if (err) {
