@@ -2,7 +2,13 @@ const connection = require('../db-config');
 const router = require('express').Router();
 
 router.get('/', (req, res) => {
-
+connection.query('SELECT * FROM product', (err, result) => {
+    if(err){
+        res.status(500).send('Error retrieving product');
+    } else {
+        res.json(result);
+    }
+    });
 });
 
 router.get('/:id', (req, res) => {
