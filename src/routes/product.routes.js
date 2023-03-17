@@ -12,7 +12,19 @@ connection.query('SELECT * FROM product', (err, result) => {
 });
 
 router.get('/:id', (req, res) => {
-
+const productId = req.params.id;
+connection.query(
+    'SELECT * FROM product WHERE id = ?',
+    [productId],
+    (err, results) => {
+        if(err){
+            res.status(500).send('Error retrieving animal from database')
+        } else {
+            if(results.length) res.json(result[0]);
+            else res.status(404).send('Product not found')
+        }
+    }
+)
 });
 
 router.post('/', (req, res) => {
