@@ -45,9 +45,26 @@ router.get('/', (req, res) => {
         );
       });
 
-router.put('/:id', (req, res) => {
-
-});
+      router.put('/:id', (req, res) => {
+        const productId = req.params.id;
+        const db = connection.promise();
+        let existingProduct = null;
+        db.query('SELECT * FROM product WHERE id = ?', [productId])
+          .then(([results]) => {
+            existingProduct = results[0];
+            if (!existingProduct) return Promise.reject('RECORD_NOT_FOUND');
+            return db.query('UPDATE product SET ? WHERE id = ?', [req.body, productId]);
+          })
+          .then(() => {
+            res.status(200).json({ ...existingProduct, ...req.body });
+          })
+          .catch((err) => {
+            console.error(err);
+            if (err === 'RECORD_NOT_FOUND')
+              res.status(404).send(`Product with id ${productId} not found.`);
+            else res.status(500).send('Error updating an product');
+          });
+      });
 
 router.delete('/:id', (req, res) => {
 
