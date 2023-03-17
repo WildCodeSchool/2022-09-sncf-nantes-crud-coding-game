@@ -31,7 +31,7 @@ router.post("/", (req, res) => {
   const { name, price, description, picture } = req.body;
   connection.query(
     "INSERT INTO product (name, price, description, picture) VALUES (?, ?, ?, ?)",
-    [name, species, description, picture],
+    [name, price, description, picture],
     (err, result) => {
       if (err) {
         console.error(err);
