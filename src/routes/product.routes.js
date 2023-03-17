@@ -1,8 +1,8 @@
 const connection = require('../db-config');
 const router = require('express').Router();
 
-router.get('/api/', (req, res) => {
-    connection.query('SELECT * FROM product', (err, result) => {
+router.get('/api/products', (req, res) => {
+    connection.query('SELECT * FROM products', (err, result) => {
       if (err) {
         res.status(500).send('Error retrieving product from database');
       } else {
@@ -18,7 +18,7 @@ router.get('/:id', (req, res) => {
 router.post('/api/products', (req, res) => {
     const { name, price, description, picture } = req.body;
     connection.query(
-      'INSERT INTO product (name, price, description, picture ) VALUES (?, ?, ?, ?)',
+      'INSERT INTO products (name, price, description, picture ) VALUES (?, ?, ?, ?)',
       [name, price, description, picture],
       (err, result) => {
         if (err) {
