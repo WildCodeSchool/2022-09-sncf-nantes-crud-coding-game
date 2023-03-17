@@ -1,7 +1,5 @@
 CREATE DATABASE mydbname;
-
 USE mydbname;
-
 CREATE TABLE animal (
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     name VARCHAR(100) NOT NULL,
@@ -10,11 +8,14 @@ CREATE TABLE animal (
     description TEXT,
     picture VARCHAR(255)
 );
-
 INSERT INTO animal (name, species, age, description, picture)
-VALUES
-('Simba', 'Lion', 8, 'I am a lion, roar!', 'https://lemagdesanimaux.ouest-france.fr/images/dossiers/2020-03/mini/lion-072746-650-400.jpg');
-
+VALUES (
+        'Simba',
+        'Lion',
+        8,
+        'I am a lion, roar!',
+        'https://lemagdesanimaux.ouest-france.fr/images/dossiers/2020-03/mini/lion-072746-650-400.jpg'
+    );
 CREATE TABLE product (
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     name VARCHAR(100) NOT NULL,
@@ -22,8 +23,10 @@ CREATE TABLE product (
     description TEXT,
     picture VARCHAR(255)
 );
-
 INSERT INTO product (name, price, description, picture)
-VALUES
-('Chocolate', 12, 'Great chocolate from Belgium', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Chocolate_Alternative1.jpg/800px-Chocolate_Alternative1.jpg');
-
+VALUES (
+        'Chocolate',
+        12,
+        'Great chocolate from Belgium',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Chocolate_Alternative1.jpg/800px-Chocolate_Alternative1.jpg'
+    );
