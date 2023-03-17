@@ -1,7 +1,7 @@
 const connection = require('../db-config');
 const router = require('express').Router();
 
-router.get('/', (req, res) => {
+router.get('/api/', (req, res) => {
     connection.query('SELECT * FROM product', (err, result) => {
       if (err) {
         res.status(500).send('Error retrieving product from database');
@@ -15,7 +15,7 @@ router.get('/:id', (req, res) => {
 
 });
 
-router.post('/product', (req, res) => {
+router.post('/api/products', (req, res) => {
     const { name, price, description, picture } = req.body;
     connection.query(
       'INSERT INTO product (name, price, description, picture ) VALUES (?, ?, ?, ?)',
@@ -37,7 +37,7 @@ router.put('/:id', (req, res) => {
 
 });
 
-router.delete('/product/:id', (req, res) => {
+router.delete('api/products/:id', (req, res) => {
     connection.query(
       'DELETE FROM product WHERE id = ?',
       [req.params.id],

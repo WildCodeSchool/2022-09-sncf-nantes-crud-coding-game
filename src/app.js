@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
 const getProduct = (req,res) => {
   res.status(200).json(product)
 }
-app.get("/product", getProduct
+app.get("/products", getProduct
 )
 
 app.listen(port, (err) => {
